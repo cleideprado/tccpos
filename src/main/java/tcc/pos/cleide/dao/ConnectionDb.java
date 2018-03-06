@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 public class ConnectionDb {
    // JDBC driver name and database URL
-   static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";  
-   static final String DB_URL = "jdbc:mysql://lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/toqkkbomlyhiuz96?useTimezone=true&serverTimezone=UTC";
+   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+   static final String DB_URL = "jdbc:mysql://lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/toqkkbomlyhiuz96";
 
    //  Database credentials
    static final String USER = "ukw6b2qsg7q4hmua";
