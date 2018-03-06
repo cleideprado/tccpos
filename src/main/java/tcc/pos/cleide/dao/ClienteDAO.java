@@ -16,7 +16,7 @@ public class ClienteDAO {
 
 	        PreparedStatement stmt = null;
 	        try {    
-	            stmt = conn.prepareStatement("INSERT INTO Clientes (CPF, nome, endereco, estado, municipio, telefone, email, senha) values (?,?,?,?,?,?,?,?)");
+	            stmt = conn.prepareStatement("INSERT INTO clientes (cpf, nome, endereco, estado, municipio, telefone, email, senha) values (?,?,?,?,?,?,?,?)");
 	            stmt.setString(1, cliente.getCpf());
 	            stmt.setString(2, cliente.getNome());
 	            stmt.setString(3, cliente.getEndereco());
@@ -39,7 +39,7 @@ public class ClienteDAO {
 
         PreparedStatement stmt = null;
         try {         
-            stmt = conn.prepareStatement("DELETE FROM Clientes WHERE CPF=?");
+            stmt = conn.prepareStatement("DELETE FROM clientes WHERE cpf=?");
             stmt.setString(1, cliente.getCpf());
             stmt.executeUpdate();
         } catch (SQLException ex) {
@@ -54,7 +54,7 @@ public class ClienteDAO {
 
         PreparedStatement stmt = null;
         try {         
-            stmt = conn.prepareStatement("UPDATE Clientes SET nome=?, endereco=?, estado=?, municipio=?, telefone=?, email=?, senha=? WHERE CPF=?");
+            stmt = conn.prepareStatement("UPDATE clientes SET nome=?, endereco=?, estado=?, municipio=?, telefone=?, email=?, senha=? WHERE cpf=?");
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEndereco());
             stmt.setString(3, cliente.getEstado());
@@ -77,12 +77,12 @@ public class ClienteDAO {
         Cliente cliente = null;
         PreparedStatement stmt = null;
         try {         
-            stmt = conn.prepareStatement("SELECT * FROM Clientes WHERE CPF=?");
+            stmt = conn.prepareStatement("SELECT * FROM clientes WHERE cpf=?");
             stmt.setString(1, cpf);
             rs = stmt.executeQuery();
             if (rs.next()){
                 cliente = new Cliente();
-                cliente.setCpf(rs.getString("CPF"));
+                cliente.setCpf(rs.getString("cpf"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setEndereco(rs.getString("endereco"));
                 cliente.setEstado(rs.getString("estado"));
@@ -104,7 +104,7 @@ public class ClienteDAO {
         ResultSet rs =null;    
         PreparedStatement stmt = null;
         try {         
-            stmt = conn.prepareStatement("SELECT * FROM Clientes WHERE CPF=?");
+            stmt = conn.prepareStatement("SELECT * FROM clientes WHERE cpf=?");
             stmt.setString(1, cpf);
             rs = stmt.executeQuery();
             if (rs.next()){
@@ -126,12 +126,12 @@ public class ClienteDAO {
         List<Cliente> teamList = new ArrayList<>();
         
         try {
-            stmt = conn.prepareStatement("SELECT * FROM Clientes");
+            stmt = conn.prepareStatement("SELECT * FROM clientes");
             rs = stmt.executeQuery();
             
             while(rs.next()){
             	Cliente cliente = new Cliente();
-                cliente.setCpf(rs.getString("CPF"));
+                cliente.setCpf(rs.getString("cpf"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setEndereco(rs.getString("endereco"));
                 cliente.setEstado(rs.getString("estado"));
@@ -157,7 +157,7 @@ public class ClienteDAO {
         ResultSet rs =null;
         PreparedStatement stmt = null;
         try {         
-            stmt = conn.prepareStatement("SELECT * FROM Clientes WHERE email=? and senha=?");
+            stmt = conn.prepareStatement("SELECT * FROM clientes WHERE email=? and senha=?");
             stmt.setString(1, email);
             stmt.setString(2, senha);
             rs = stmt.executeQuery();
