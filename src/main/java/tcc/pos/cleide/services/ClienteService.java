@@ -47,7 +47,7 @@ public class ClienteService {
     @Path("/")
     public Response criarCliente(Cliente cliente) {
     	ClienteDAO.inserir(cliente);
-    	return Response.status(201).build();
+    	return Response.status(201).header("Access-Control-Allow-Origin", "*").build();
     }
     
     @PUT
@@ -56,9 +56,9 @@ public class ClienteService {
     public Response atualizarCliente(@PathParam("cpf") String cpf, Cliente cliente) {
     	if (ClienteDAO.hasCPF(cpf)) {
     		ClienteDAO.atualizar(cliente);
-    		return Response.status(200).build();
+    		return Response.status(200).header("Access-Control-Allow-Origin", "*").build();
     	}
-    	return Response.status(404).entity("CPF not found!!!").build();
+    	return Response.status(404).entity("CPF not found!!!").header("Access-Control-Allow-Origin", "*").build();
     }
     
     @DELETE
@@ -66,8 +66,8 @@ public class ClienteService {
     public Response excluirCliente(@PathParam("cpf") String cpf) {
     	if (ClienteDAO.hasCPF(cpf)) {
     		ClienteDAO.excluir(ClienteDAO.getByCPF(cpf));
-    		return Response.status(200).build();
+    		return Response.status(200).header("Access-Control-Allow-Origin", "*").build();
     	}
-    	return Response.status(404).entity("CPF not found!!!").build();
+    	return Response.status(404).entity("CPF not found!!!").header("Access-Control-Allow-Origin", "*").build();
     }
 }
