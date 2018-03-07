@@ -61,7 +61,7 @@ public class ClienteService {
     @OPTIONS
     @Path("/{cpf}")
     public Response allowCORSDelete() {
-    	return Response.status(200).header("Access-Control-Allow-Origin", "*").header("Access-Control-Allow-Methods", "DELETE").header("Access-Control-Allow-Headers", "Access-Control-Allow-Origin,Content-Type,Access-Control-Allow-Methods").allow("HEAD,POST,GET,OPTIONS,PUT").build();
+    	return Response.status(200).header("Access-Control-Allow-Origin", "*").header("Access-Control-Allow-Methods", "DELETE,PUT").header("Access-Control-Allow-Headers", "Access-Control-Allow-Origin,Content-Type,Access-Control-Allow-Methods").allow("HEAD,POST,GET,OPTIONS,PUT").build();
     }
     
     @PUT
