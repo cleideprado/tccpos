@@ -18,7 +18,7 @@ public class LoginService {
 		if (c != null) {
 			return Response.status(200).entity(c).build();  	
 		}
-		return Response.status(401).build();
+		return Response.status(401).entity("").build();
 	}
 	
 }
