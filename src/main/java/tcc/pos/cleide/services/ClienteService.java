@@ -54,7 +54,7 @@ public class ClienteService {
     @OPTIONS
     @Path("/")
     public Response allowCORS() {
-    	return Response.status(200).header("Access-Control-Allow-Origin", "*").build();
+    	return Response.status(200).header("Access-Control-Allow-Origin", "*").allow("HEAD,POST,GET,OPTIONS,PUT").build();
     }
     
     @PUT
