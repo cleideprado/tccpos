@@ -6,6 +6,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import tcc.pos.cleide.dao.ClienteDAO;
+import tcc.pos.cleide.entities.Cliente;
 
 @Path("login")
 public class LoginService {
@@ -13,10 +14,11 @@ public class LoginService {
 	@GET
 	@Path("")
 	public Response autenticacao(@QueryParam("email") String email, @QueryParam("senha") String senha) {
-		if (ClienteDAO.autenticacao(email, senha)) {
-			return Response.status(200).build();
+		Cliente c = ClienteDAO.autenticacao(email, senha);
+		if (c != null) {
+			return Response.status(200).entity(c).build();  	
 		}
-		return Response.status(401).entity("You are not authorized!").build();
+		return Response.status(401).build();
 	}
 	
 }

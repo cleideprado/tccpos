@@ -97,7 +97,7 @@ public class ClienteDAO {
             ConnectionDb.closeConnection(conn,stmt);
         }
         return cliente;
-    }
+    }	
 	
 	public static boolean hasCPF(String cpf){
         Connection conn = ConnectionDb.getConnection();
@@ -152,9 +152,10 @@ public class ClienteDAO {
     }
 	
 	
-    public static boolean autenticacao(String email, String senha){
+    public static Cliente autenticacao(String email, String senha){
         Connection conn = ConnectionDb.getConnection();
         ResultSet rs =null;
+        Cliente cliente = null;
         PreparedStatement stmt = null;
         try {         
             stmt = conn.prepareStatement("SELECT * FROM clientes WHERE email=? and senha=?");
@@ -162,15 +163,22 @@ public class ClienteDAO {
             stmt.setString(2, senha);
             rs = stmt.executeQuery();
             if (rs.next()){
-            	ConnectionDb.closeConnection(conn,stmt,rs);
-                return true;
+            	cliente = new Cliente();
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setEstado(rs.getString("estado"));
+                cliente.setMunicipio(rs.getString("municipio"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setSenha(rs.getString("senha"));
              }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }finally{
             ConnectionDb.closeConnection(conn,stmt,rs);
         }
-        return false;
+        return cliente;
     }
 	
 }
