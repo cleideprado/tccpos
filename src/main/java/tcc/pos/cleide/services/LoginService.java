@@ -16,9 +16,9 @@ public class LoginService {
 	public Response autenticacao(@QueryParam("email") String email, @QueryParam("senha") String senha) {
 		Cliente c = ClienteDAO.autenticacao(email, senha);
 		if (c != null) {
-			return Response.status(200).entity(c).build();  	
+			return Response.status(200).entity(c).header("Access-Control-Allow-Origin", "*").build();  	
 		}
-		return Response.status(401).entity("").build();
+		return Response.status(401).entity("").header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 }
