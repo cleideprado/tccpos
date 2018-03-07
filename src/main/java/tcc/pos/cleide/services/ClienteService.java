@@ -57,6 +57,13 @@ public class ClienteService {
     	return Response.status(200).header("Access-Control-Allow-Origin", "*").header("Access-Control-Allow-Headers", "Access-Control-Allow-Origin,Content-Type").allow("HEAD,POST,GET,OPTIONS,PUT").build();
     }
     
+    
+    @OPTIONS
+    @Path("/{cpf}")
+    public Response allowCORSDelete() {
+    	return Response.status(200).header("Access-Control-Allow-Origin", "*").header("Access-Control-Allow-Headers", "Access-Control-Allow-Origin,Content-Type").allow("HEAD,POST,GET,OPTIONS,PUT").build();
+    }
+    
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{cpf}")
