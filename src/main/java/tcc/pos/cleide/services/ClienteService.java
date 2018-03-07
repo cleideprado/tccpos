@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -48,6 +49,12 @@ public class ClienteService {
     public Response criarCliente(Cliente cliente) {
     	ClienteDAO.inserir(cliente);
     	return Response.status(201).header("Access-Control-Allow-Origin", "*").header("Access-Control-Request-Methods", "POST").allow("OPTIONS").build();
+    }
+    
+    @OPTIONS
+    @Path("/")
+    public Response allowCORS() {
+    	return Response.status(200).header("Access-Control-Allow-Origin", "*").build();
     }
     
     @PUT
