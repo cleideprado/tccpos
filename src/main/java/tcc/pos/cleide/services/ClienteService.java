@@ -66,7 +66,7 @@ public class ClienteService {
     public Response excluirCliente(@PathParam("cpf") String cpf) {
     	if (ClienteDAO.hasCPF(cpf)) {
     		ClienteDAO.excluir(ClienteDAO.getByCPF(cpf));
-    		return Response.status(200).header("Access-Control-Allow-Origin", "*").build();
+    		return Response.status(200).entity("Deleted!").header("Access-Control-Allow-Origin", "*").build();
     	}
     	return Response.status(404).entity("CPF not found!!!").header("Access-Control-Allow-Origin", "*").build();
     }
