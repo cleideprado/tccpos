@@ -11,9 +11,20 @@ import javax.ws.rs.core.Response;
 import tcc.pos.cleide.dao.ClienteDAO;
 import tcc.pos.cleide.entities.Cliente;
 
+/**
+ * Classe de serviços para autenticação. Contem Metodo GET que verifica a existencia de um Cliente no DB.
+ * @author Cleide Prado
+ */
 @Path("login")
 public class LoginService {
-
+	
+	/**
+	 * Verifica se um Cliente existe baseado no email e senha enviados por parametro.
+	 * Retorna todas as informações do cliente em caso positivo e caso contrario retorna HTTP 401 code.
+	 * @param email String
+	 * @param senha String
+	 * @return HTTP status code
+	 */
 	@GET
 	@Path("")
 	@Produces(MediaType.APPLICATION_JSON)

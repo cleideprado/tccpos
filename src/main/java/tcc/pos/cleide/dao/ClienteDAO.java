@@ -9,8 +9,15 @@ import java.util.List;
 
 import tcc.pos.cleide.entities.Cliente;
 
+/**Classe de acesso ao Banco de dados para o Objeto CLiente. Contem métodos para manipular CRUD de Cliente no DB.
+* @author Cleide Prado
+*/
 public class ClienteDAO {
 
+	/**
+	 * Insere um objeto Cliente no Banco de dados
+	 * @param cliente Objeto Cliente
+	 * */
 	public static void inserir(Cliente cliente) {
 		 Connection conn = ConnectionDb.getConnection();
 
@@ -33,7 +40,10 @@ public class ClienteDAO {
 	        }
 		
 	}
-	
+	/**
+	 * Remove um objeto Cliente no Banco de dados
+	 * @param cliente Objeto Cliente
+	 * */
 	public static void excluir (Cliente cliente) {
 		Connection conn = ConnectionDb.getConnection();
 
@@ -48,7 +58,10 @@ public class ClienteDAO {
             ConnectionDb.closeConnection(conn,stmt);
         }
 	}
-	
+	/**
+	 * Atualiza atributos um objeto Cliente no Banco de dados
+	 * @param cliente Objeto Cliente
+	 * */
 	public static void atualizar(Cliente cliente){
         Connection conn = ConnectionDb.getConnection();
 
@@ -70,7 +83,11 @@ public class ClienteDAO {
             ConnectionDb.closeConnection(conn,stmt);
         }
     }
-	
+	/**
+	 * Recupera um objeto Cliente no Banco de dados atraves do atributo cpf
+	 * @param cpf String
+	 * @return Cliente 
+	 * */
 	public static Cliente getByCPF(String cpf){
         Connection conn = ConnectionDb.getConnection();
         ResultSet rs =null;
@@ -98,7 +115,11 @@ public class ClienteDAO {
         }
         return cliente;
     }	
-	
+	/**
+	 * Verifica se existe algum Cliente com o atributo cpf informado.
+	 * @param cpf String
+	 * @return boolean 
+	 * */
 	public static boolean hasCPF(String cpf){
         Connection conn = ConnectionDb.getConnection();
         ResultSet rs =null;    
@@ -118,7 +139,10 @@ public class ClienteDAO {
         }
         return false;
     }
-	
+	/**
+	 * Recupera uma Lista de objetos Cliente no Banco de dados
+	 * @return List 
+	 * */
 	public static List<Cliente> listar(){
         Connection conn = ConnectionDb.getConnection();
         PreparedStatement stmt = null;
@@ -151,7 +175,12 @@ public class ClienteDAO {
         return teamList;
     }
 	
-	
+	/**
+	 * Recupera um objeto Cliente no Banco de dados caso usuario e senha sejam válidos
+	 * @param email String
+	 * @param senha String
+	 * @return Cliente 
+	 * */
     public static Cliente autenticacao(String email, String senha){
         Connection conn = ConnectionDb.getConnection();
         ResultSet rs =null;
