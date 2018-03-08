@@ -1,0 +1,29 @@
+<ion-view title="Login" class="bar-positive">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <div class="row responsive-sm">
+            <div class="col">
+                <form name="loginForm" ng-model="loginForm">
+                    <div class="list list-inset">
+                        <label class="item item-input">
+                            <input type="email" id="email" name="email" ng-model="cliente.email" placeholder="Email" required>
+                        </label>
+                        <label class="item item-input">
+                            <input type="password" id="password" name="password" ng-model="cliente.senha" placeholder="Senha" required>
+                        </label>
+                    </div>
+                    <div class="padding">
+                        <button class="button button-block button-balanced" ng-disabled="loginForm.$invalid || !loginForm.$error" ng-click="onLogin()">LOG IN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row responsive-sm">
+            <div class="col">
+                <p align="center">Ainda não é cliente?
+                    <a class="green-color" ui-sref="signup">Cadastre-se</a>
+                </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

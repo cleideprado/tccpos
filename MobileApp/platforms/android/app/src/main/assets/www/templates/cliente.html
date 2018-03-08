@@ -1,0 +1,99 @@
+<script id="modal.html" type="text/ng-template">
+    <ion-modal-view>
+            <!--<ion-view title="Atualizar" class="bar-positive">-->
+            <ion-content overflow-scroll="true" padding="true" class="has-header">
+                <div class="row">
+                    <div class="col">
+                        <form name="editForm">
+                            <div class="list">
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label bold">Nome</span>
+                                    <input type="text" name="nome" placeholder="Nome" ng-model="cliente.nome" required>
+                                </label>
+                                <p ng-show="editForm.nome.$pristine || editForm.nome.$valid">
+                                    <br>
+                                </p>
+                                <p class="error-message" ng-hide="editForm.nome.$pristine || editForm.nome.$valid">Nome é obrigatório!</p>
+        
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label bold">Senha</span>
+                                    <input type="password" name="senha" placeholder="Senha" ng-model="cliente.senha" required>
+                                </label>
+                                <p ng-show="editForm.senha.$pristine || editForm.senha.$valid">
+                                    <br>
+                                </p>
+                                <p class="error-message" ng-show="!editForm.senha.$pristine && !editForm.senha.$valid">Senha é obrigatório!</p>
+        
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label bold">Endereço</span>
+                                    <input type="text" name="endereco" placeholder="Endereço" ng-model="cliente.endereco" required>
+                                </label>
+                                <p ng-show="editForm.endereco.$pristine || editForm.endereco.$valid">
+                                    <br>
+                                </p>
+                                <p class="error-message" ng-show="!editForm.endereco.$pristine && !editForm.endereco.$valid">Endereço é obrigatorio!</p>
+        
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label bold">Estado</span>
+                                    <input type="text" name="estado" placeholder="Estado" ng-model="cliente.estado" required>
+                                </label>
+                                <p ng-show="editForm.estado.$pristine || editForm.estado.$valid">
+                                    <br>
+                                </p>
+                                <p class="error-message" ng-show="!editForm.estado.$pristine && !editForm.estado.$valid">Estado é obrigatorio!</p>
+        
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label bold">Município</span>
+                                    <input type="text" name="municipio" placeholder="Município" ng-model="cliente.municipio" required>
+                                </label>
+                                <p ng-show="editForm.municipio.$pristine || editForm.municipio.$valid">
+                                    <br>
+                                </p>
+                                <p class="error-message" ng-show="!editForm.municipio.$pristine && !editForm.municipio.$valid">Município é obrigatorio!</p>
+        
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label bold">Telefone</span>
+                                    <input type="tel" pattern="[0-9]*" name="telefone" placeholder="Telefone" ng-model="cliente.telefone">
+                                </label>
+                                <p>
+                                    <br>
+                                </p>
+        
+        
+                            </div>
+                            <div>
+                                <button class="button button-block button-balanced" ng-disabled="editForm.$invalid" ng-click="editarcliente()">Salvar Alterações</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </ion-content>
+            <!--</ion-view>-->
+        </ion-modal-view>
+</script>
+<ion-view title="Cliente" class="bar-positive">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <ion-list>
+            <ion-item class="item item-avatar" >
+                <img src="https://ontalk.com.br/img/avatars/new/18.png" class="avatars">
+                <h2>{{ cliente.nome }}</h2>
+                <h3 class="icon ion-person"> {{ cliente.cpf }}</h3>
+                <h3 class="icon ion-home"> {{ cliente.endereco }}</h3>
+                <h3 class="icon ion-home"> {{ cliente.estado }}</h3>
+                <h3 class="icon ion-home"> {{ cliente.municipio }}</h3>
+                <h3 class="icon ion-iphone"> {{ cliente.telefone }}</h3>
+                <h3 class="icon ion-email"> {{ cliente.email }}</h3>
+               <!-- <h3 class="icon ion-iphone"> {{ cliente.senha }}</h3> -->
+                <ion-option-button class="button-energized" ng-click="openModal()">
+                    <button class="button button-icon icon ion-android-create" ></button>
+                </ion-option-button>
+                <ion-option-button class="button-assertive"  ng-click="deletecliente()">
+                    <button class="button button-icon icon ion-android-delete"></button>
+                </ion-option-button>
+            </ion-item>
+            <div class="padding">
+                <button class="button button-block button-assertive"  ng-click="onLogout()">Logout</button>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>
